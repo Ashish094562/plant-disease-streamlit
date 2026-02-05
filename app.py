@@ -6,32 +6,32 @@ import json
 from huggingface_hub import hf_hub_download
 
 # --------------------------------------------------
-# CONFIG
+# APP CONFIG
 # --------------------------------------------------
-REPO_ID = "Ashish094562/plant-disease-tflite"
-MODEL_FILENAME = "plant_model_quant.tflite"
-JSON_FILENAME = "plant_disease.json"
-IMAGE_SIZE = 160
-
 st.set_page_config(
     page_title="Plant Disease Detection",
     page_icon="🌱",
     layout="centered"
 )
 
+REPO_ID = "Ashish094562/plant-disease-tflite"
+MODEL_FILE = "plant_model_quant.tflite"
+JSON_FILE = "plant_disease.json"
+IMAGE_SIZE = 160
+
 # --------------------------------------------------
-# DOWNLOAD FILES FROM HUGGING FACE
+# DOWNLOAD MODEL + JSON FROM HUGGING FACE
 # --------------------------------------------------
 @st.cache_resource
-def load_files():
-    model_path = hf_hub_download(REPO_ID, MODEL_FILENAME)
-    json_path = hf_hub_download(REPO_ID, JSON_FILENAME)
+def download_assets():
+    model_path = hf_hub_download(repo_id=REPO_ID, filename=MODEL_FILE)
+    json_path = hf_hub_download(repo_id=REPO_ID, filename=JSON_FILE)
     return model_path, json_path
 
-MODEL_PATH, JSON_PATH = load_files()
+MODEL_PATH, JSON_PATH = download_assets()
 
 # --------------------------------------------------
-# LOAD TFLITE MODEL USING TENSORFLOW
+# LOAD TFLITE MODEL (USING TENSORFLOW)
 # --------------------------------------------------
 @st.cache_resource
 def load_model():
@@ -44,7 +44,7 @@ input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
 
 # --------------------------------------------------
-# LABELS
+# CLASS LABELS
 # --------------------------------------------------
 LABELS = [
     'Apple___Apple_scab','Apple___Black_rot','Apple___Cedar_apple_rust','Apple___healthy',
@@ -66,49 +66,56 @@ LABELS = [
 # LOAD DISEASE INFO
 # --------------------------------------------------
 with open(JSON_PATH, "r") as f:
-    disease_data = json.load(f)
+    disease_list = json.load(f)
 
-DISEASE_INFO = {d["name"]: d for d in disease_data}
+DISEASE_INFO = {d["name"]: d for d in disease_list}
 
 # --------------------------------------------------
 # IMAGE PREPROCESSING
 # --------------------------------------------------
-def preprocess(image):
-    image = image.convert("RGB").resize((IMAGE_SIZE, IMAGE_SIZE))
-    img = np.array(image, dtype=np.float32) / 255.0
-    return np.expand_dims(img, axis=0)
+def preprocess_image(image: Image.Image):
+    image = image.convert("RGB")
+    image = image.resize((IMAGE_SIZE, IMAGE_SIZE))
+    img_array = np.array(image, dtype=np.float32) / 255.0
+    img_array = np.expand_dims(img_array, axis=0)
+    return img_array
 
 # --------------------------------------------------
-# PREDICTION
+# PREDICTION FUNCTION
 # --------------------------------------------------
-def predict(image):
-    x = preprocess(image)
-    interpreter.set_tensor(input_details[0]["index"], x)
+def predict_disease(image: Image.Image):
+    input_data = preprocess_image(image)
+    interpreter.set_tensor(input_details[0]["index"], input_data)
     interpreter.invoke()
     output = interpreter.get_tensor(output_details[0]["index"])
     idx = int(np.argmax(output))
-    return LABELS[idx], float(np.max(output))
+    confidence = float(np.max(output))
+    return LABELS[idx], confidence
 
 # --------------------------------------------------
-# UI
+# STREAMLIT UI
 # --------------------------------------------------
 st.title("🌱 Plant Disease Detection")
-st.write("Upload a plant leaf image to detect disease using AI.")
+st.write("Upload a plant leaf image to detect disease using a deep learning model.")
 
-file = st.file_uploader("Upload Image", type=["jpg", "png", "jpeg"])
+uploaded_file = st.file_uploader(
+    "Upload Leaf Image",
+    type=["jpg", "jpeg", "png"]
+)
 
-if file:
-    img = Image.open(file)
-    st.image(img, use_container_width=True)
+if uploaded_file:
+    image = Image.open(uploaded_file)
+    st.image(image, caption="Uploaded Image", use_container_width=True)
 
-    with st.spinner("Analyzing..."):
-        label, conf = predict(img)
+    with st.spinner("Analyzing image..."):
+        label, confidence = predict_disease(image)
 
-    st.success(f"Prediction: **{label}**")
-    st.write(f"Confidence: `{conf*100:.2f}%`")
+    st.success(f"**Prediction:** {label}")
+    st.write(f"**Confidence:** {confidence * 100:.2f}%")
 
     if label in DISEASE_INFO:
-        st.subheader("Cause")
+        st.subheader("🦠 Cause")
         st.write(DISEASE_INFO[label]["cause"])
-        st.subheader("Cure")
+
+        st.subheader("💊 Cure / Prevention")
         st.write(DISEASE_INFO[label]["cure"])
