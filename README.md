@@ -1,54 +1,57 @@
 # 🌱 Plant Disease Recognition using Deep Learning & TFLite
 
-An end-to-end AI/ML project that detects plant diseases from leaf images using a Convolutional Neural Network (CNN), optimized with TFLite INT8 quantization, and deployed on Huggingface spaces.
+An end-to-end **AI/ML project** that detects plant diseases from leaf images using a **Convolutional Neural Network (CNN)**, optimized with **TFLite INT8 quantization**, and deployed using **Streamlit** on **Hugging Face Spaces**.
 
+🔗 **Live Demo:**  
+https://huggingface.co/spaces/Ashish094562/Plant_disease_recog
 
-### Demo : https://huggingface.co/spaces/Ashish094562/Plant_disease_recog
 ---
 
 ## 🚀 Project Highlights
 
-- CNN-based image classification for 38 plant disease categories  
-- Achieved ~95% validation accuracy with strong class-wise performance  
-- Optimized using TFLite INT8 quantization, reducing model size by ~75%  
-- Low-latency inference (<100 ms per image on CPU)  
-- Real-time prediction via Huggingface spaces 
-- Lightweight and cloud-deployable solution  
+- CNN-based image classification for **38 plant disease categories**
+- Achieved **~95% validation accuracy** with strong class-wise performance
+- **TFLite INT8 quantization** reduced model size by **~75%**
+- **Low-latency inference (<100 ms)** per image on CPU
+- Real-time predictions using **Streamlit**
+- Lightweight and suitable for **edge & low-resource devices**
 
 ---
 
 ## 🛠️ Tech Stack
 
-- Programming Language: Python  
-- Libraries: NumPy, Pandas, Scikit-learn  
-- Deep Learning: TensorFlow, Keras, TFLite  
-- Computer Vision: CNN, Image Classification  
-- Deployment: Huggingface spaces, Hugging Face Hub  
-- Tools: Git, GitHub  
+- **Programming Language:** Python  
+- **Libraries:** NumPy, Pandas, Scikit-learn  
+- **Deep Learning:** TensorFlow, Keras, TFLite  
+- **Computer Vision:** CNN, Image Classification  
+- **Frontend:** Streamlit  
+- **Deployment:** Hugging Face Spaces, Hugging Face Hub  
+- **Tools:** Git, GitHub  
 
 ---
 
-## 🧠 Model & Metrics
+## 🧠 Model & Performance
 
-- Model Type: Convolutional Neural Network (CNN)  
-- Number of Classes: 38  
-- Accuracy: ~95%  
-- F1-Score: ~0.94  
-- Inference Time: <100 ms (CPU)  
-- Model Size Reduction: ~75% after INT8 quantization
-- technique: Transfer Learning
+- **Model Type:** Convolutional Neural Network (CNN)  
+- **Number of Classes:** 38  
+- **Validation Accuracy:** ~95%  
+- **F1-Score:** ~0.94  
+- **Inference Time:** <100 ms (CPU)  
+- **Model Size Reduction:** ~75% after INT8 quantization
+- **Techniques: Transfer Learning
 
 ---
 
 ## 📂 Project Structure
-```
+
+```text
 plant-disease-streamlit/
-├── app.py                  # Streamlit application  
-├── requirements.txt        # Project dependencies  
-├── plant_model_quant.tflite# Quantized TFLite model  
-├── plant_disease.json      # Disease cause & cure information  
-└── README.md  
-```
+├── app.py                    # Streamlit frontend application
+├── requirements.txt          # Python dependencies
+├── plant_model_quant.tflite  # Quantized TFLite model
+├── plant_disease.json        # Disease causes & treatment information
+└── README.md                 # Project documentation
+
 ---
 
 ## ▶️ How to Run Locally
