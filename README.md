@@ -1,9 +1,11 @@
 # 🌱 Plant Disease Recognition using Deep Learning & TFLite
 
-An end-to-end **AI/ML project** that detects plant diseases from leaf images using a **Convolutional Neural Network (CNN)**, optimized with **TFLite INT8 quantization**, and deployed using **Streamlit** on **Hugging Face Spaces**.
+An end-to-end **AI/ML project** that detects plant diseases from leaf images using a **Convolutional Neural Network (CNN)**, optimized with **TFLite INT8 quantization**, and deployed using **Streamlit** on **Hugging Face Spaces** and **Streamlit cloud**.
 
 🔗 **Live Demo:**  
 https://huggingface.co/spaces/Ashish094562/Plant_disease_recog
+🔗**Live Demo:**
+https://plant-disease-app-rnkhccrzvbnrlfv3lkwequ.streamlit.app/
 
 ---
 
@@ -25,7 +27,7 @@ https://huggingface.co/spaces/Ashish094562/Plant_disease_recog
 - **Deep Learning:** TensorFlow, Keras, TFLite  
 - **Computer Vision:** CNN, Image Classification  
 - **Frontend:** Streamlit  
-- **Deployment:** Hugging Face Spaces, Hugging Face Hub  
+- **Deployment:** Streamlit cloud, Hugging Face Spaces, Hugging Face Hub  
 - **Tools:** Git, GitHub  
 
 ---
@@ -86,7 +88,7 @@ streamlit run app.py
 
 Model hosted on Hugging Face Hub
 
-Application deployed using Huggingface Spaces
+Application deployed using Huggingface Spaces and Streamlit cloud
 
 📌 Use Cases
 
