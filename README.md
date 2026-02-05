@@ -62,8 +62,8 @@ cd plant-disease-streamlit
 python -m venv myvenv
 ```
 3. Environment Activate
-for windows(PowerShell) :- .\myvenv\Scripts\Activate.ps1
-for mac/linux :- source myvenv/bin/activate
+-for windows(PowerShell) :- .\myvenv\Scripts\Activate.ps1
+-for mac/linux :- source myvenv/bin/activate
 ```
 \myvenv\Scripts\Activate.ps1
 ```
@@ -72,7 +72,7 @@ for mac/linux :- source myvenv/bin/activate
 pip install -r requirements.txt
 ```
 5. Run
-   it will take some time in first try ...
+   -it will take some time in first try ...
 ```
 streamlit run app.py
 
