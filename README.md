@@ -35,19 +35,20 @@ An end-to-end AI/ML project that detects plant diseases from leaf images using a
 - Accuracy: ~95%  
 - F1-Score: ~0.94  
 - Inference Time: <100 ms (CPU)  
-- Model Size Reduction: ~75% after INT8 quantization  
+- Model Size Reduction: ~75% after INT8 quantization
+- technique: Transfer Learning
 
 ---
 
 ## 📂 Project Structure
-
+```
 plant-disease-streamlit/
 ├── app.py                  # Streamlit application  
 ├── requirements.txt        # Project dependencies  
 ├── plant_model_quant.tflite# Quantized TFLite model  
 ├── plant_disease.json      # Disease cause & cure information  
 └── README.md  
-
+```
 ---
 
 ## ▶️ How to Run Locally
