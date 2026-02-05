@@ -54,7 +54,7 @@ plant-disease-streamlit/
 ├── plant_model_quant.tflite  # Quantized TFLite model
 ├── plant_disease.json        # Disease causes & treatment information
 └── README.md                 # Project documentation
-
+```
 ---
 
 ## ▶️ How to Run Locally
