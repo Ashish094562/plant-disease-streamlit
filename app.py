@@ -1,8 +1,8 @@
 import streamlit as st
+import tensorflow as tf
 import numpy as np
 from PIL import Image
 import json
-import tflite_runtime.interpreter as tflite
 from huggingface_hub import hf_hub_download
 
 # --------------------------------------------------
@@ -13,9 +13,6 @@ MODEL_FILENAME = "plant_model_quant.tflite"
 JSON_FILENAME = "plant_disease.json"
 IMAGE_SIZE = 160
 
-# --------------------------------------------------
-# STREAMLIT PAGE CONFIG
-# --------------------------------------------------
 st.set_page_config(
     page_title="Plant Disease Detection",
     page_icon="🌱",
@@ -23,37 +20,31 @@ st.set_page_config(
 )
 
 # --------------------------------------------------
-# DOWNLOAD MODEL & JSON FROM HUGGING FACE
+# DOWNLOAD FILES FROM HUGGING FACE
 # --------------------------------------------------
 @st.cache_resource
 def load_files():
-    model_path = hf_hub_download(
-        repo_id=REPO_ID,
-        filename=MODEL_FILENAME
-    )
-    json_path = hf_hub_download(
-        repo_id=REPO_ID,
-        filename=JSON_FILENAME
-    )
+    model_path = hf_hub_download(REPO_ID, MODEL_FILENAME)
+    json_path = hf_hub_download(REPO_ID, JSON_FILENAME)
     return model_path, json_path
 
 MODEL_PATH, JSON_PATH = load_files()
 
 # --------------------------------------------------
-# LOAD TFLITE MODEL
+# LOAD TFLITE MODEL USING TENSORFLOW
 # --------------------------------------------------
 @st.cache_resource
-def load_tflite_model():
-    interpreter = tflite.Interpreter(model_path=MODEL_PATH)
+def load_model():
+    interpreter = tf.lite.Interpreter(model_path=MODEL_PATH)
     interpreter.allocate_tensors()
     return interpreter
 
-interpreter = load_tflite_model()
+interpreter = load_model()
 input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
 
 # --------------------------------------------------
-# CLASS LABELS (PLANT VILLAGE DATASET)
+# LABELS
 # --------------------------------------------------
 LABELS = [
     'Apple___Apple_scab','Apple___Black_rot','Apple___Cedar_apple_rust','Apple___healthy',
@@ -72,72 +63,52 @@ LABELS = [
 ]
 
 # --------------------------------------------------
-# LOAD DISEASE INFO JSON
+# LOAD DISEASE INFO
 # --------------------------------------------------
 with open(JSON_PATH, "r") as f:
     disease_data = json.load(f)
 
-DISEASE_INFO = {
-    item["name"]: {
-        "cause": item["cause"],
-        "cure": item["cure"]
-    }
-    for item in disease_data
-}
+DISEASE_INFO = {d["name"]: d for d in disease_data}
 
 # --------------------------------------------------
 # IMAGE PREPROCESSING
 # --------------------------------------------------
-def preprocess_image(image: Image.Image):
-    image = image.convert("RGB")
-    image = image.resize((IMAGE_SIZE, IMAGE_SIZE))
+def preprocess(image):
+    image = image.convert("RGB").resize((IMAGE_SIZE, IMAGE_SIZE))
     img = np.array(image, dtype=np.float32) / 255.0
-    img = np.expand_dims(img, axis=0)
-    return img
+    return np.expand_dims(img, axis=0)
 
 # --------------------------------------------------
-# PREDICTION FUNCTION
+# PREDICTION
 # --------------------------------------------------
-def predict_disease(image: Image.Image):
-    input_data = preprocess_image(image)
-    interpreter.set_tensor(input_details[0]["index"], input_data)
+def predict(image):
+    x = preprocess(image)
+    interpreter.set_tensor(input_details[0]["index"], x)
     interpreter.invoke()
     output = interpreter.get_tensor(output_details[0]["index"])
-
-    class_index = int(np.argmax(output))
-    confidence = float(np.max(output))
-
-    return LABELS[class_index], confidence
+    idx = int(np.argmax(output))
+    return LABELS[idx], float(np.max(output))
 
 # --------------------------------------------------
-# STREAMLIT UI
+# UI
 # --------------------------------------------------
 st.title("🌱 Plant Disease Detection")
-st.write("Upload a plant leaf image to detect disease using a lightweight AI model.")
+st.write("Upload a plant leaf image to detect disease using AI.")
 
-uploaded_file = st.file_uploader(
-    "📷 Upload leaf image",
-    type=["jpg", "jpeg", "png"]
-)
+file = st.file_uploader("Upload Image", type=["jpg", "png", "jpeg"])
 
-if uploaded_file:
-    image = Image.open(uploaded_file)
-    st.image(image, caption="Uploaded Image", use_container_width=True)
+if file:
+    img = Image.open(file)
+    st.image(img, use_container_width=True)
 
-    with st.spinner("🔍 Analyzing image..."):
-        label, confidence = predict_disease(image)
+    with st.spinner("Analyzing..."):
+        label, conf = predict(img)
 
-    st.success("✅ Prediction Complete")
-
-    st.subheader("🌿 Predicted Disease")
-    st.write(f"**{label}**")
-    st.write(f"**Confidence:** `{confidence * 100:.2f}%`")
+    st.success(f"Prediction: **{label}**")
+    st.write(f"Confidence: `{conf*100:.2f}%`")
 
     if label in DISEASE_INFO:
-        st.subheader("💡 Disease Details")
-
-        st.markdown("**🦠 Cause**")
+        st.subheader("Cause")
         st.write(DISEASE_INFO[label]["cause"])
-
-        st.markdown("**💊 Cure / Prevention**")
+        st.subheader("Cure")
         st.write(DISEASE_INFO[label]["cure"])
