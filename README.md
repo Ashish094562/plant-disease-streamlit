@@ -38,7 +38,7 @@ https://huggingface.co/spaces/Ashish094562/Plant_disease_recog
 - **F1-Score:** ~0.94  
 - **Inference Time:** <100 ms (CPU)  
 - **Model Size Reduction:** ~75% after INT8 quantization
-- **Techniques: Transfer Learning
+- **Techniques:** Transfer Learning
 
 ---
 
