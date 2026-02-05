@@ -62,8 +62,7 @@ cd plant-disease-streamlit
 python -m venv myvenv
 ```
 3. Environment Activate
-   -for windows(PowerShell) :- .\myvenv\Scripts\Activate.ps1
-   -for mac/linux :- source myvenv/bin/activate
+   -for windows(PowerShell) :- .\myvenv\Scripts\Activate.ps1   or  for mac/linux :- source myvenv/bin/activate
 
 ```
 \myvenv\Scripts\Activate.ps1
