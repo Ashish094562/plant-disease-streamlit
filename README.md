@@ -1,4 +1,4 @@
-# 🌱 Plant Disease Detection using Deep Learning & TFLite
+# 🌱 Plant Disease Recognition using Deep Learning & TFLite
 
 An end-to-end AI/ML project that detects plant diseases from leaf images using a Convolutional Neural Network (CNN), optimized with TFLite INT8 quantization, and deployed as a Streamlit web application.
 
