@@ -1,7 +1,9 @@
 # 🌱 Plant Disease Recognition using Deep Learning & TFLite
 
 An end-to-end AI/ML project that detects plant diseases from leaf images using a Convolutional Neural Network (CNN), optimized with TFLite INT8 quantization, and deployed on Huggingface spaces.
--Demo : https://huggingface.co/spaces/Ashish094562/Plant_disease_recog
+
+
+### Demo : https://huggingface.co/spaces/Ashish094562/Plant_disease_recog
 ---
 
 ## 🚀 Project Highlights
