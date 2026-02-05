@@ -56,7 +56,24 @@ plant-disease-streamlit/
 ```bash
 git clone https://github.com/Ashish094562/plant-disease-streamlit.git
 cd plant-disease-streamlit
+```
+2. Environment
+```
+python -m venv myvenv
+```
+3. Environment Activate
+for windows(PowerShell) :- .\myvenv\Scripts\Activate.ps1
+for mac/linux :- source myvenv/bin/activate
+```
+\myvenv\Scripts\Activate.ps1
+```
+4. Requirements setup
+```
 pip install -r requirements.txt
+```
+5. Run
+   it will take some time in first try ...
+```
 streamlit run app.py
 
 ```
