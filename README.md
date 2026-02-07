@@ -35,7 +35,7 @@ https://plant-disease-app-8.streamlit.app/
 
 ## 🧠 Model & Performance
 
-- **Model Type:**Convolutional Neural Network (CNN) with EfficientNet (Transfer Learning)
+- **Model Type:** Convolutional Neural Network (CNN) with EfficientNet (Transfer Learning)
 - **Number of Classes:** 38 (Plant Disease Categories)
 - **Training Strategy:** Fine-tuned EfficientNet backbone (epochs 21–30)
 - **Validation Accuracy:** 99.1%
