@@ -41,7 +41,7 @@ https://plant-disease-app-8.streamlit.app/
 - **F1-Score:** ~0.94  
 - **Inference Time:** <100 ms (CPU)  
 - **Model Size Reduction:** ~75% after INT8 quantization
-- **Techniques:** Transfer Learning
+- **Techniques:** Transfer Learning(EfficientNet)
 
 ---
 
