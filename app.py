@@ -26,7 +26,7 @@ st.set_page_config(
 )
 
 # --------------------------------------------------
-# DOWNLOAD FILES FROM HF
+# DOWNLOAD FILES FROM HUGGING FACE
 # --------------------------------------------------
 @st.cache_resource
 def download_assets():
@@ -51,10 +51,10 @@ input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
 
 # --------------------------------------------------
-# LOAD LABELS
+# LOAD LABELS (LIST — CORRECT)
 # --------------------------------------------------
 with open(LABELS_PATH, "r") as f:
-    IDX_TO_LABEL = {int(k): v for k, v in json.load(f).items()}
+    LABELS = json.load(f)   # list, index = output neuron
 
 # --------------------------------------------------
 # LOAD DISEASE INFO
@@ -65,17 +65,13 @@ with open(DISEASE_PATH, "r", encoding="utf-8") as f:
 DISEASE_INFO = {d["name"]: d for d in disease_list}
 
 # --------------------------------------------------
-# IMAGE PREPROCESSING
+# IMAGE PREPROCESSING (MATCH TRAINING EXACTLY)
 # --------------------------------------------------
 def preprocess(image: Image.Image):
     image = image.convert("RGB")
     image = image.resize((IMAGE_SIZE, IMAGE_SIZE))
-    img = np.array(image)
 
-    if input_details[0]["dtype"] == np.float32:
-        img = img.astype(np.float32)
-    else:
-        img = img.astype(np.uint8)
+    img = np.array(image).astype(np.float32)  # NO scaling, NO preprocess
 
     img = np.expand_dims(img, axis=0)
     return img
@@ -89,13 +85,14 @@ def predict(image: Image.Image):
     interpreter.set_tensor(input_details[0]["index"], x)
     interpreter.invoke()
 
+    # Model ALREADY outputs softmax probabilities
     probs = interpreter.get_tensor(output_details[0]["index"])[0]
 
     top_idx = int(np.argmax(probs))
     confidence = float(probs[top_idx])
 
-    label = IDX_TO_LABEL[top_idx]
-    info = DISEASE_INFO[label]
+    label = LABELS[top_idx]
+    info = DISEASE_INFO.get(label, {"cause": "N/A", "cure": "N/A"})
 
     top3 = np.argsort(probs)[-3:][::-1]
 
@@ -114,16 +111,22 @@ uploaded_file = st.file_uploader(
 
 if uploaded_file:
     image = Image.open(uploaded_file)
-    st.image(image, caption="Uploaded Image", width="stretch")
+    st.image(image, caption="Uploaded Image", use_container_width=True)
 
     with st.spinner("🔍 Analyzing image..."):
         label, confidence, info, probs, top3 = predict(image)
 
     st.success("✅ Prediction Complete")
 
+    # -------------------------------
+    # MAIN RESULT
+    # -------------------------------
     st.subheader("🌿 Prediction")
     st.write(f"**Disease:** {label}")
     st.write(f"**Confidence:** {confidence * 100:.2f}%")
+
+    if confidence < 0.30:
+        st.warning("⚠️ Low confidence — image may be unclear or out of distribution.")
 
     st.subheader("🦠 Cause")
     st.write(info["cause"])
@@ -131,8 +134,9 @@ if uploaded_file:
     st.subheader("💊 Recommended Treatment")
     st.write(info["cure"])
 
+    # -------------------------------
+    # TOP-3
+    # -------------------------------
     st.subheader("📊 Top Predictions")
     for idx in top3:
-        st.write(
-            f"{IDX_TO_LABEL[int(idx)]} → {probs[int(idx)] * 100:.2f}%"
-        )
+        st.write(f"{LABELS[int(idx)]} → {probs[int(idx)] * 100:.2f}%")
