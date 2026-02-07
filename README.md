@@ -3,7 +3,7 @@
 An end-to-end **AI/ML project** that detects plant diseases from leaf images using a **Convolutional Neural Network (CNN)**, optimized with **TFLite INT8 quantization**, and deployed using **Streamlit** on **Hugging Face Spaces** and **Streamlit cloud**.
 
 🔗 **Live Demo (Hugging Face):**  
-https://huggingface.co/spaces/Ashish094562/Plant_disease_recog  
+https://huggingface.co/spaces/Ashish094562/Plant_disease_recog
 
 🔗 **Live Demo (Streamlit Cloud):**  
 https://plant-disease-app-8.streamlit.app/
