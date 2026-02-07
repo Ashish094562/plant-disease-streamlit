@@ -35,15 +35,17 @@ https://plant-disease-app-8.streamlit.app/
 
 ## 🧠 Model & Performance
 
-- **Model Type:** Convolutional Neural Network (CNN)  
-- **Number of Classes:** 38  
-- **Validation Accuracy:** ~95%  
-- **F1-Score:** ~0.94  
-- **Inference Time:** <100 ms (CPU)  
-- **Model Size Reduction:** ~75% after INT8 quantization
-- **Techniques:** Transfer Learning(EfficientNet)
+- **Model Type:**Convolutional Neural Network (CNN) with EfficientNet (Transfer Learning)
+- **Number of Classes:** 38 (Plant Disease Categories)
+- **Training Strategy:** Fine-tuned EfficientNet backbone (epochs 21–30)
+- **Validation Accuracy:** 99.1%
+- **F1-Score:** ~0.94
+- **Inference Time:** < 100 ms per image (CPU, TFLite)
+- **Model Optimization:** INT8 Quantization
+- **Model Size Reduction:** ~75% with negligible accuracy drop
 
 ---
+
 
 ## 📂 Project Structure
 
