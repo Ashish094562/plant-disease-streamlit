@@ -68,13 +68,13 @@ https://plant-disease-app-8.streamlit.app/
 
 ```text
 plant-disease-streamlit/
-├── app.py                    # Streamlit frontend application
-├── requirements.txt          # Python dependencies
-├── plant_model_float32.tflite  # TensorFlow Lite FLOAT32 model
-├──
-├──
-├── plant_disease.json        # Disease causes & treatment information
-└── README.md                 # Project documentation
+├── app.py                           # Streamlit frontend application
+├── requirements.txt                 # Python dependencies
+├── plant_model_float32.tflite       # TensorFlow Lite FLOAT32 model
+├── Plant_Disease_Recognition.ipynb  # Jupyter Notebook
+├── label.json                       # labels
+├── plant_disease.json               # Disease causes & treatment information
+└── README.md                        # Project documentation
 ```
 ---
 
@@ -85,7 +85,7 @@ plant-disease-streamlit/
 git clone https://github.com/Ashish094562/plant-disease-streamlit.git
 cd plant-disease-streamlit
 ```
-2. Environment
+2. Environment (windows)
 ```
 python -m venv myvenv
 \myvenv\Scripts\Activate.ps1
