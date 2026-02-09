@@ -12,12 +12,14 @@ https://plant-disease-app-8.streamlit.app/
 
 ## 🚀 Project Highlights
 
-- CNN-based image classification for **38 plant disease categories**
-- Achieved **~95% validation accuracy** with strong class-wise performance
-- **TFLite INT8 quantization** reduced model size by **~75%**
-- **Low-latency inference (<100 ms)** per image on CPU
-- Real-time predictions using **Streamlit**
-- Lightweight and suitable for **edge & low-resource devices**
+- CNN-based image classification for 39 plant disease & healthy classes
+- Achieved ~99.1% accuracy with strong macro-averaged precision, recall, and F1
+- Low-latency inference (~43 ms mean, ~78 ms P95) on CPU using TFLite
+- Transfer learning with EfficientNet, fine-tuned for optimal performance
+- TensorFlow Lite (FLOAT32) for deployment stability and correctness
+- Real-time predictions via Streamlit UI
+- Designed for CPU-based & edge-ready deployment
+- INT8 quantization planned for further size reduction and faster inference
 
 ---
 
@@ -35,25 +37,42 @@ https://plant-disease-app-8.streamlit.app/
 
 ## 🧠 Model & Performance
 
-- **Model Type:** Convolutional Neural Network (CNN) with EfficientNet (Transfer Learning)
+- **Model Type:** Convolutional Neural Network (CNN)
+- **Backbone**: EfficientNet (Transfer Learning)
 - **Number of Classes:** 38 (Plant Disease Categories)
-- **Training Strategy:** Fine-tuned EfficientNet backbone (epochs 21–30)
+-  **Input Size**: 160 × 160 × 3
+-  **Training Strategy**:
+  - Frozen backbone followed by fine-tuning
+  - Best performance achieved during epochs 21–30
 - **Validation Accuracy:** 99.1%
-- **F1-Score:** ~0.94
-- **Inference Time:** < 100 ms per image (CPU, TFLite)
-- **Model Optimization:** INT8 Quantization
-- **Model Size Reduction:** ~75% with negligible accuracy drop
+- **Optimization**:
+  - Converted to TensorFlow Lite (FLOAT32)
+  - INT8 quantization planned for edge devices
 
 ---
 
-
+## 📊 Model Performance Metrics
+```json
+{
+  "Accuracy": "~99.1%",
+  "Precision (macro)": "~0.989",
+  "Recall (macro)": "~0.989",
+  "F1-score (macro)": "~0.991",
+  "Mean latency": "~43 ms (CPU)",
+  "P95 latency": "~78 ms (CPU)",
+  "Number of classes": 39,
+  "Model format": "TFLite FLOAT32"
+}
+```
 ## 📂 Project Structure
 
 ```text
 plant-disease-streamlit/
 ├── app.py                    # Streamlit frontend application
 ├── requirements.txt          # Python dependencies
-├── plant_model_quant.tflite  # Quantized TFLite model
+├── plant_model_float32.tflite  # TensorFlow Lite FLOAT32 model
+├──
+├──
 ├── plant_disease.json        # Disease causes & treatment information
 └── README.md                 # Project documentation
 ```
@@ -69,18 +88,14 @@ cd plant-disease-streamlit
 2. Environment
 ```
 python -m venv myvenv
-```
-3. Environment Activate
-   -for windows(PowerShell) :- .\myvenv\Scripts\Activate.ps1   or  for mac/linux :- source myvenv/bin/activate
-
-```
 \myvenv\Scripts\Activate.ps1
 ```
-4. Requirements setup
+
+3. Requirements setup
 ```
 pip install -r requirements.txt
 ```
-5. Run
+4. Run the application
    -it will take some time in first try ...
 ```
 streamlit run app.py
