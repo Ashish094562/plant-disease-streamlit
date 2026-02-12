@@ -2,11 +2,14 @@
 
 An end-to-end AI/ML project that detects plant diseases from leaf images using a CNN with EfficientNet (Transfer Learning), optimized using TensorFlow Lite (FLOAT32) and deployed as a real-time web app with Streamlit on Hugging Face Spaces and Streamlit Cloud.
 
+🔗 **Live Demo (Streamlit Cloud):**  
+https://plant-disease-app-6ad3rjqvcy9eqq2n9bwemj.streamlit.app/
+
+
 🔗 **Live Demo (Hugging Face):**  
 https://huggingface.co/spaces/Ashish094562/Plant_disease_recog
 
-🔗 **Live Demo (Streamlit Cloud):**  
-https://plant-disease-app-6ad3rjqvcy9eqq2n9bwemj.streamlit.app/
+
 
 ---
 
