@@ -6,7 +6,7 @@ An end-to-end AI/ML project that detects plant diseases from leaf images using a
 https://huggingface.co/spaces/Ashish094562/Plant_disease_recog
 
 🔗 **Live Demo (Streamlit Cloud):**  
-https://plant-disease-app-8.streamlit.app/
+https://plant-disease-app-6ad3rjqvcy9eqq2n9bwemj.streamlit.app/
 
 ---
 
