@@ -1,0 +1,197 @@
+[
+    {
+        "name": "Apple___Apple_scab",
+        "cause": "Fungus Venturia inaequalis. Favorable conditions are cool, wet weather.",
+        "cure": "Apply preventive fungicides like captan or myclobutanil at early growth stages. Remove and destroy fallen leaves, prune for airflow, and plant resistant varieties."
+    },
+    {
+        "name": "Apple___Black_rot",
+        "cause": "Caused by the fungus Botryosphaeria obtusa.",
+        "cure": "Prune and burn infected branches and fruits. Apply protective fungicides during bloom and fruit development, and maintain orchard sanitation."
+    },
+    {
+        "name": "Apple___Cedar_apple_rust",
+        "cause": "Fungus Gymnosporangium juniperi-virginianae. Requires junipers as an alternate host.",
+        "cure": "Remove nearby juniper hosts if possible. Apply fungicides like myclobutanil during early leaf development and use resistant cultivars."
+    },
+    {
+        "name": "Apple___healthy",
+        "cause": "No disease present.",
+        "cure": "Continue proper irrigation, balanced fertilization, pruning, and regular monitoring to maintain plant health."
+    },
+    {
+        "name": "Background_without_leaves",
+        "cause": "No disease or plant detected.",
+        "cure": "No treatment required."
+    },
+    {
+        "name": "Blueberry___healthy",
+        "cause": "No disease present.",
+        "cure": "Ensure acidic soil, proper mulching, regular watering, and periodic pruning for healthy growth."
+    },
+    {
+        "name": "Cherry___Powdery_mildew",
+        "cause": "Fungus Podosphaera clandestina.",
+        "cure": "Apply sulfur or potassium bicarbonate sprays early. Improve air circulation through pruning and avoid overhead irrigation."
+    },
+    {
+        "name": "Cherry___healthy",
+        "cause": "No disease present.",
+        "cure": "Maintain regular pruning, proper spacing, and balanced fertilization."
+    },
+    {
+        "name": "Corn___Cercospora_leaf_spot Gray_leaf_spot",
+        "cause": "Fungus Cercospora zeae-maydis.",
+        "cure": "Use resistant hybrids, rotate crops, and apply foliar fungicides at early disease stages."
+    },
+    {
+        "name": "Corn___Common_rust",
+        "cause": "Fungus Puccinia sorghi.",
+        "cure": "Plant resistant hybrids and apply fungicides if infection is severe. Ensure proper field sanitation."
+    },
+    {
+        "name": "Corn___Northern_Leaf_Blight",
+        "cause": "Fungus Exserohilum turcicum.",
+        "cure": "Use resistant varieties, rotate crops, and apply fungicides when symptoms first appear."
+    },
+    {
+        "name": "Corn___healthy",
+        "cause": "No disease present.",
+        "cure": "Follow proper fertilization, irrigation, and crop rotation practices."
+    },
+    {
+        "name": "Grape___Black_rot",
+        "cause": "Fungus Guignardia bidwellii.",
+        "cure": "Remove infected mummified berries and apply fungicides like mancozeb during early season."
+    },
+    {
+        "name": "Grape___Esca_(Black_Measles)",
+        "cause": "Fungal complex including Phaeomoniella chlamydospora.",
+        "cure": "Prune and destroy infected wood, protect pruning wounds, and maintain vine vigor through proper nutrition."
+    },
+    {
+        "name": "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)",
+        "cause": "Fungus Pseudocercospora vitis.",
+        "cure": "Improve vineyard sanitation and apply recommended fungicides during humid conditions."
+    },
+    {
+        "name": "Grape___healthy",
+        "cause": "No disease present.",
+        "cure": "Ensure proper pruning, trellising, irrigation, and nutrient management."
+    },
+    {
+        "name": "Orange___Haunglongbing_(Citrus_greening)",
+        "cause": "Bacterium Candidatus Liberibacter spp. Spread by psyllid insects.",
+        "cure": "Remove infected trees immediately, control psyllids using approved insecticides, and plant certified disease-free saplings."
+    },
+    {
+        "name": "Peach___Bacterial_spot",
+        "cause": "Bacterium Xanthomonas campestris pv. pruni.",
+        "cure": "Apply copper sprays during dormancy, use resistant cultivars, and avoid overhead irrigation."
+    },
+    {
+        "name": "Peach___healthy",
+        "cause": "No disease present.",
+        "cure": "Maintain proper pruning, fertilization, and watering schedules."
+    },
+    {
+        "name": "Pepper,_bell___Bacterial_spot",
+        "cause": "Bacterium Xanthomonas campestris pv. vesicatoria.",
+        "cure": "Use certified disease-free seeds, apply copper-based bactericides, and practice crop rotation."
+    },
+    {
+        "name": "Pepper,_bell___healthy",
+        "cause": "No disease present.",
+        "cure": "Ensure proper spacing, irrigation, and balanced fertilization."
+    },
+    {
+        "name": "Potato___Early_blight",
+        "cause": "Fungus Alternaria solani.",
+        "cure": "Apply fungicides such as chlorothalonil, rotate crops, and remove infected debris."
+    },
+    {
+        "name": "Potato___Late_blight",
+        "cause": "Pathogen Phytophthora infestans.",
+        "cure": "Use certified disease-free seed tubers, apply protective fungicides, and destroy infected plants immediately."
+    },
+    {
+        "name": "Potato___healthy",
+        "cause": "No disease present.",
+        "cure": "Maintain proper irrigation, fertilization, and crop rotation."
+    },
+    {
+        "name": "Raspberry___healthy",
+        "cause": "No disease present.",
+        "cure": "Provide proper pruning, mulching, and irrigation management."
+    },
+    {
+        "name": "Soybean___healthy",
+        "cause": "No disease present.",
+        "cure": "Follow crop rotation, soil fertility management, and regular monitoring."
+    },
+    {
+        "name": "Squash___Powdery_mildew",
+        "cause": "Fungal pathogens including Erysiphe cichoracearum.",
+        "cure": "Apply sulfur or neem oil sprays early and ensure good air circulation between plants."
+    },
+    {
+        "name": "Strawberry___Leaf_scorch",
+        "cause": "Fungus Diplocarpon earlianum.",
+        "cure": "Remove infected leaves, improve air circulation, and apply fungicides during wet conditions."
+    },
+    {
+        "name": "Strawberry___healthy",
+        "cause": "No disease present.",
+        "cure": "Maintain proper spacing, mulching, and irrigation practices."
+    },
+    {
+        "name": "Tomato___Bacterial_spot",
+        "cause": "Bacterium Xanthomonas spp.",
+        "cure": "Use disease-free seeds, apply copper sprays, rotate crops, and avoid overhead watering."
+    },
+    {
+        "name": "Tomato___Early_blight",
+        "cause": "Fungus Alternaria solani.",
+        "cure": "Remove infected lower leaves, apply fungicides, and rotate crops annually."
+    },
+    {
+        "name": "Tomato___Late_blight",
+        "cause": "Pathogen Phytophthora infestans.",
+        "cure": "Apply preventive fungicides, ensure good spacing for airflow, and remove infected plants promptly."
+    },
+    {
+        "name": "Tomato___Leaf_Mold",
+        "cause": "Fungus Passalora fulva.",
+        "cure": "Improve greenhouse ventilation, reduce humidity, and apply appropriate fungicides."
+    },
+    {
+        "name": "Tomato___Septoria_leaf_spot",
+        "cause": "Fungus Septoria lycopersici.",
+        "cure": "Remove affected leaves, mulch soil to prevent splash spread, and apply fungicides regularly."
+    },
+    {
+        "name": "Tomato___Spider_mites Two-spotted_spider_mite",
+        "cause": "Spider mites Tetranychus urticae.",
+        "cure": "Spray plants with water to reduce mites, use insecticidal soap or neem oil, and introduce natural predators like ladybugs."
+    },
+    {
+        "name": "Tomato___Target_Spot",
+        "cause": "Fungus Corynespora cassiicola.",
+        "cure": "Apply fungicides at early infection, improve plant spacing, and remove infected debris."
+    },
+    {
+        "name": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+        "cause": "Virus spread by whiteflies.",
+        "cure": "Control whiteflies using insecticides or sticky traps, remove infected plants, and use resistant varieties."
+    },
+    {
+        "name": "Tomato___Tomato_mosaic_virus",
+        "cause": "Virus transmitted through contact and contaminated tools.",
+        "cure": "Remove and destroy infected plants, disinfect tools regularly, and avoid handling plants when wet."
+    },
+    {
+        "name": "Tomato___healthy",
+        "cause": "No disease present.",
+        "cure": "Continue proper watering, fertilization, staking, and routine inspection for pests and diseases."
+    }
+]

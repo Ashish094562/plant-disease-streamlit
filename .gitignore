@@ -1,11 +1,33 @@
-# Python
-__pycache__/
-*.pyc
 
-# Virtual environment
+__pycache__/
+*.py[cod]
+*$py.class
+
 myvenv/
 venv/
+env/
+ENV/
 
-# OS
+.env
+
+
+.streamlit/
+
+
+.cache/
+huggingface/
+
+
+*.tflite
+*.h5
+*.pt
+*.pth
+
+
+.ipynb_checkpoints/
+
+
+.vscode/
+
 .DS_Store
 Thumbs.db
