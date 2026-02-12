@@ -75,6 +75,7 @@ plant-disease-streamlit/
 ├── label.json                       # labels
 ├── plant_disease.json               # Disease causes & treatment information
 └── README.md                        # Project documentation
+└── runtime.txt                      # Set Python version to 3.10 for TensorFlow compatibility
 ```
 ---
 
@@ -88,7 +89,7 @@ cd plant-disease-streamlit
 2. Environment (windows)
 ```
 python -m venv myvenv
-\myvenv\Scripts\Activate.ps1
+.\myvenv\Scripts\Activate.ps1
 ```
 
 3. Requirements setup
